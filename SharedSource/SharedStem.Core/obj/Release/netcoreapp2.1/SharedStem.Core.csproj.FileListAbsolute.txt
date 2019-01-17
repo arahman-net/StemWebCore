@@ -1,0 +1,14 @@
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\SharedStem.Core.deps.json
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\SharedStem.Core.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\SharedStem.Core.pdb
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\Newtonsoft.Json.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\Stem.Core.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\Stem.Core.pdb
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\bin\Release\netcoreapp2.1\Newtonsoft.Json.xml
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.csprojAssemblyReference.cache
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.csproj.CoreCompileInputs.cache
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.AssemblyInfoInputs.cache
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.AssemblyInfo.cs
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.csproj.CopyComplete
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\SharedStem.Core\obj\Release\netcoreapp2.1\SharedStem.Core.pdb

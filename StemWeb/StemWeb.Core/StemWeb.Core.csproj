@@ -1,0 +1,111 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>78099d1d-c8da-4e0a-b432-e30722d84a9c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Account\Manage\**" />
+    <Content Remove="Pages\Account\Manage\**" />
+    <EmbeddedResource Remove="Pages\Account\Manage\**" />
+    <None Remove="Pages\Account\Manage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Security\SecurityGroupFeaturesController.cs" />
+    <Compile Remove="Pages\Account\AccessDenied.cshtml.cs" />
+    <Compile Remove="Pages\Account\ConfirmEmail.cshtml.cs" />
+    <Compile Remove="Pages\Account\ExternalLogin.cshtml.cs" />
+    <Compile Remove="Pages\Account\ForgotPassword.cshtml.cs" />
+    <Compile Remove="Pages\Account\ForgotPasswordConfirmation.cshtml.cs" />
+    <Compile Remove="Pages\Account\Lockout.cshtml.cs" />
+    <Compile Remove="Pages\Account\LoginWith2fa.cshtml.cs" />
+    <Compile Remove="Pages\Account\LoginWithRecoveryCode.cshtml.cs" />
+    <Compile Remove="Pages\Account\ResetPassword.cshtml.cs" />
+    <Compile Remove="Pages\Account\ResetPasswordConfirmation.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Account\AccessDenied.cshtml" />
+    <Content Remove="Pages\Account\ConfirmEmail.cshtml" />
+    <Content Remove="Pages\Account\ExternalLogin.cshtml" />
+    <Content Remove="Pages\Account\ForgotPassword.cshtml" />
+    <Content Remove="Pages\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Remove="Pages\Account\Lockout.cshtml" />
+    <Content Remove="Pages\Account\LoginWith2fa.cshtml" />
+    <Content Remove="Pages\Account\LoginWithRecoveryCode.cshtml" />
+    <Content Remove="Pages\Account\ResetPassword.cshtml" />
+    <Content Remove="Pages\Account\ResetPasswordConfirmation.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedSource\SharedStem.Core\SharedStem.Core.csproj" />
+    <ProjectReference Include="..\..\SharedSource\Stem.Core\Stem.Core.csproj" />
+    <ProjectReference Include="..\..\SharedSource\StemHttp.Core\StemHttp.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Account\Error.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Account\Login.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Account\Logout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Account\Register.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Error.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Account\_Layout_Account.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\_ValidationScriptsPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\SecurityGroups\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\SecurityGroups\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\SecurityGroups\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\SecurityGroups\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Users\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Users\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Users\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Users\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Users\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,184 @@
+﻿@using StemWeb.Core.Controllers.Security
+@inject AppFeaturesController appFeaturesController
+@model SharedStem.Core.Entities.Security.SecurityGroup
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Edit Security Group
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="IsOwner" />
+                    <input type="hidden" asp-for="CompanyContextId" />
+                    <input type="hidden" asp-for="CreatedBy" />
+                    <input type="hidden" asp-for="CreationDate" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="GroupName" class="control-label"></label>
+                        <input asp-for="GroupName" class="form-control" />
+                        <span asp-validation-for="GroupName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsActive" class="control-label"></label>
+                        @*<input asp-for="IsActive" class="form-control" />*@
+                        @Html.EditorFor(m => m.IsActive, "NullableBool")
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @*<input type="hidden" asp-for="FeaturePermissions" />*@
+                        <div class="featurePermissionsCss">
+                            @for (int i = 0; i < Model.FeaturePermissions.Count; i++)
+                            {
+                                var featureId = "FeaturePermissions_" + i + "_FeatureId";
+                                var createId = "FeaturePermissions_" + i + "_Create";
+                                var updateId = "FeaturePermissions_" + i + "_Update";
+                                var deleteId = "FeaturePermissions_" + i + "_Delete";
+                                var adminId = "FeaturePermissions_" + i + "_Admin";
+                                <input type="hidden" id="@featureId" value="@Model.FeaturePermissions[i].FeatureId" style="display:none" />
+                                <input type="text" id="@createId" value="@Model.FeaturePermissions[i].Create.ToString()" style="display:none" />
+                                <input type="text" id="@updateId" value="@Model.FeaturePermissions[i].Update.ToString()" style="display:none" />
+                                <input type="text" id="@deleteId" value="@Model.FeaturePermissions[i].Delete.ToString()" style="display:none" />
+                                <input type="text" id="@adminId" value="@Model.FeaturePermissions[i].Admin.ToString()" style="display:none" />
+
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <label asp-for="GroupFeatureIds"><span class="page_subheading">Select Security Features</span> </label>
+                            @Html.ListBoxFor(x => x.GroupFeatureIds, new SelectList(appFeaturesController.Get().Result.Where(f => !f.IsInternal), "Id", "Alias"))
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+            $(function () {
+
+                if ($('#GroupFeatureIds').length) {
+                    var $msListDefault = $('#GroupFeatureIds');
+
+                    $msListDefault.multiSelect({
+                        keepOrder: true,
+                        selectableHeader: '<div class="ms-header">Selectable Features</div>',
+                        selectionHeader: '<div class="ms-header">Selected Features</div>',
+                        selectableFooter: '<div class="ms-footer">&nbsp;</div>',
+                        selectionFooter: '<div class="ms-footer">&nbsp;</div>',
+                        dblClick: true,
+                        afterInit: function () {
+
+                            $('.ms-selection > ul > li').each(function (i, elem) {
+                                var optionVal = $('#GroupFeatureIds :nth-child(' + (i + 1) + ')').val();
+                                var featureElem = $('.featurePermissionsCss :input[type=hidden][value=' + optionVal + ']');
+                                var createPermission = 'false';
+                                var updatePermission = 'false';
+                                var deletePermission = 'false';
+                                var adminPermission = 'false';
+                                if (featureElem.length) {
+
+                                    var createPermission = $('#' + featureElem[0].id.replace("FeatureId","Create")).attr("value");
+                                    var updatePermission = $('#' + featureElem[0].id.replace("FeatureId", "Update")).attr("value");
+                                    var deletePermission = $('#' + featureElem[0].id.replace("FeatureId", "Delete")).attr("value");
+                                    var adminPermission = $('#' + featureElem[0].id.replace("FeatureId", "Admin")).attr("value");
+
+                                    console.log(createPermission);
+                                    console.log(updatePermission);
+                                }
+
+                                var selHtml = "<span id ='FeaturePermissions_" + this.id + "' style='float:right'>" +
+                                    "<span style='margin-right:20px;'><input type='hidden' name='FeaturePermissions[" + i + "].FeatureId' value=" + optionVal + " /></span>";
+                                //console.log(createPermission);
+                                if (typeof createPermission !== "undefined") {
+                                    if (createPermission.toLowerCase() === "true") {
+
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Create' value='true' checked />Create </span>";
+                                    }
+                                    else {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Create' value='false' />Create </span>";
+                                    }
+                                }
+
+                                if (typeof updatePermission !== "undefined" ) {
+                                    if (updatePermission.toLowerCase() === "true") {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Update' value='true' checked />Update </span>";
+                                    }
+                                    else {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Update' value='false' />Update </span>";
+                                    }
+                                }
+
+                                if (typeof deletePermission !== "undefined" ) {
+                                    if (deletePermission.toLowerCase() === "true") {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Delete' value='true' checked />Delete </span>";
+                                    }
+                                else {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Delete' value='false' />Delete </span>";
+                                    }
+                                }
+
+                                if (typeof adminPermission !== "undefined" ) {
+                                    if (adminPermission.toLowerCase() === "true") {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Admin' value='true' checked />Admin </span>";
+                                    }
+                                    else {
+                                        selHtml = selHtml + "<span style='margin-right:20px;'><input type='checkbox' name='FeaturePermissions[" + i + "].Admin' value='false' />Admin </span>";
+                                    }
+                                }
+
+                                selHtml = selHtml + "</span > ";
+                                //console.log(selHtml);
+                                $(elem).append(selHtml);
+                            });
+                        },
+                        beforeSelect: function (values, callback) {
+                            callback.call();
+                        },
+                        beforeDeselect: function (values, callback) {
+                            callback.call();
+                        }
+                    }); // end multiselect object
+                } // end if condition
+
+
+            });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('input[type="checkbox"]').click(function () {
+                //var elem = $(this);
+                console.log(this);
+                if ($(this).prop("checked") == true) {
+                    $(this).attr("value", true);
+                    //console.log("Checkbox is checked.");
+                }
+                else {
+                    //console.log("Checkbox is uncheked.");
+                    $(this).attr("value", false);
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,103 @@
+﻿@using StemWeb.Core.Controllers.Security
+@inject SecurityGroupsController securityGroupsController
+@model SharedStem.Core.Entities.SysUser
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Create User
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsActive" class="control-label"></label>
+                        @Html.EditorFor(m => m.IsActive, "NullableBool")
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @*<input type="hidden" asp-for="FeaturePermissions" />*@
+                        <div class="SecurityGroupsCss">
+                            @if (Model.SecurityGroupIds.Count > 0)
+                            {
+                                for (int i = 0; i < Model.SecurityGroupIds.Count; i++)
+                                {
+                                    var groupId = "SecurityGroups_" + i + "_SecurityGroupId";
+                                    <input type="hidden" id="@groupId" value="@Model.SecurityGroups[i].SecurityGroupId" style="display:none" />
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <label asp-for="SecurityGroupIds"><span class="page_subheading">Select Security Groups</span> </label>
+                            @Html.ListBoxFor(x => x.SecurityGroupIds, new SelectList(securityGroupsController.Get().Result, "Id", "GroupName"))
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(function () {
+
+            if ($('#SecurityGroupIds').length) {
+                var $msListDefault = $('#SecurityGroupIds');
+
+                $msListDefault.multiSelect({
+                    keepOrder: true,
+                    selectableHeader: '<div class="ms-header">Selectable Security Groups</div>',
+                    selectionHeader: '<div class="ms-header">Selected Security Groups</div>',
+                    selectableFooter: '<div class="ms-footer">&nbsp;</div>',
+                    selectionFooter: '<div class="ms-footer">&nbsp;</div>',
+                    dblClick: true,
+                    afterInit: function () {
+
+                        //$('.ms-selection > ul > li').each(function (i, elem) {
+                        //    var optionVal = $('#SecurityGroupIds :nth-child(' + (i + 1) + ')').val();
+                        //    var featureElem = $('.SecurityGroupsCss :input[type=hidden][value=' + optionVal + ']');
+                        //});
+                    },
+                    beforeSelect: function (values, callback) {
+                        callback.call();
+                    },
+                    beforeDeselect: function (values, callback) {
+                        callback.call();
+                    }
+                }); // end multiselect object
+            } // end if condition
+        });
+
+    </script>
+}

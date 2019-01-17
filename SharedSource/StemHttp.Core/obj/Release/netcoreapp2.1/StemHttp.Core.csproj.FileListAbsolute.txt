@@ -1,0 +1,12 @@
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\bin\Release\netcoreapp2.1\StemHttp.Core.deps.json
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\bin\Release\netcoreapp2.1\StemHttp.Core.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\bin\Release\netcoreapp2.1\StemHttp.Core.pdb
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\bin\Release\netcoreapp2.1\Stem.Core.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\bin\Release\netcoreapp2.1\Stem.Core.pdb
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.csprojAssemblyReference.cache
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.csproj.CoreCompileInputs.cache
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.AssemblyInfoInputs.cache
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.AssemblyInfo.cs
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.csproj.CopyComplete
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.dll
+D:\Work\Practice\MVCSampleForJobInterview\SharedSource\StemHttp.Core\obj\Release\netcoreapp2.1\StemHttp.Core.pdb
